@@ -1,0 +1,83 @@
+{
+  "tickers": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "TSLA",
+    "AMZN"
+  ],
+  "classical": {
+    "weights": [
+      0.05,
+      0.4,
+      0.4,
+      0.05,
+      0.1
+    ],
+    "return": 0.5435,
+    "risk": 0.2316,
+    "sharpe": 2.3473
+  },
+  "quantum": {
+    "binary": [
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "weights": [
+      0.3333,
+      0.3333,
+      0.3333,
+      0.0,
+      0.0
+    ],
+    "return": 0.4997,
+    "risk": 0.2092,
+    "sharpe": 2.3882,
+    "selected": [
+      "AAPL",
+      "MSFT",
+      "GOOGL"
+    ],
+    "rejected": [
+      "TSLA",
+      "AMZN"
+    ],
+    "rejectionReasons": {
+      "TSLA": "low return (+12.1%)",
+      "AMZN": "high risk (47.5%)"
+    },
+    "totalSubsets": 32
+  },
+  "assets": {
+    "AAPL": {
+      "return": 0.2895,
+      "risk": 0.2348,
+      "ratio": 1.233
+    },
+    "MSFT": {
+      "return": 0.3929,
+      "risk": 0.3094,
+      "ratio": 1.2697
+    },
+    "GOOGL": {
+      "return": 0.8168,
+      "risk": 0.2848,
+      "ratio": 2.8683
+    },
+    "TSLA": {
+      "return": 0.1211,
+      "risk": 0.2456,
+      "ratio": 0.4929
+    },
+    "AMZN": {
+      "return": 0.3912,
+      "risk": 0.4748,
+      "ratio": 0.824
+    }
+  },
+  "qaoaExplanation": "QAOA evaluated all 32 possible stock subsets (2^5), analysed the risk-return tradeoff of each combination, and concluded that {AAPL, MSFT, GOOGL} is the optimal subset. TSLA was excluded due to low return (+12.1%). AMZN was excluded due to high risk (47.5%).",
+  "winner": "quantum"
+}

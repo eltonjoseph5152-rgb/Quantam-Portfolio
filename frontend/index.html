@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Portfolio Optimization using QAOA</title>
+    <meta name="description" content="Compare Classical Markowitz portfolio optimization with Quantum QAOA on real stock data. Interactive visualization dashboard.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background particles -->
+    <div class="bg-grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-badge">⚛️ Quantum Computing × Finance</div>
+        <h1 class="hero-title">
+            <span class="gradient-text">Quantum Portfolio</span>
+            <br>Optimization using QAOA
+        </h1>
+        <p class="hero-subtitle">
+            Comparing Classical Markowitz Mean-Variance optimization with the 
+            Quantum Approximate Optimization Algorithm on real-world stock data
+        </p>
+        <div class="hero-stats" id="hero-stats">
+            <!-- Filled by JS -->
+        </div>
+    </header>
+
+    <!-- QAOA Explanation Section -->
+    <section class="section" id="qaoa-section">
+        <div class="section-header">
+            <span class="section-tag">How It Works</span>
+            <h2>QAOA Decision Process</h2>
+            <p class="section-desc" id="qaoa-explanation-text"></p>
+        </div>
+        <div class="explanation-grid" id="explanation-grid">
+            <!-- Filled by JS -->
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="section" id="charts-section">
+        <div class="section-header">
+            <span class="section-tag">Visual Analysis</span>
+            <h2>Performance Dashboard</h2>
+        </div>
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3 class="chart-title">Asset Allocation Comparison</h3>
+                <p class="chart-desc">Portfolio weight distribution: Classical (bounded 5%-40%) vs Quantum (binary selection)</p>
+                <div class="chart-container">
+                    <canvas id="allocationChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title">Risk vs Expected Return</h3>
+                <p class="chart-desc">Efficient frontier view — lower risk & higher return is ideal (top-left corner)</p>
+                <div class="chart-container">
+                    <canvas id="riskReturnChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Asset Analysis -->
+    <section class="section" id="assets-section">
+        <div class="section-header">
+            <span class="section-tag">Stock Analysis</span>
+            <h2>Individual Asset Metrics</h2>
+        </div>
+        <div class="asset-cards" id="asset-cards">
+            <!-- Filled by JS -->
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="section" id="comparison-section">
+        <div class="section-header">
+            <span class="section-tag">Head to Head</span>
+            <h2>Classical vs Quantum</h2>
+        </div>
+        <div class="comparison-table-wrapper">
+            <table class="comparison-table" id="comparison-table">
+                <!-- Filled by JS -->
+            </table>
+        </div>
+    </section>
+
+    <!-- Winner Section -->
+    <section class="section winner-section" id="winner-section">
+        <div class="winner-card" id="winner-card">
+            <!-- Filled by JS -->
+        </div>
+    </section>
+
+    <!-- Technical Details -->
+    <section class="section" id="tech-section">
+        <div class="section-header">
+            <span class="section-tag">Under the Hood</span>
+            <h2>Technical Architecture</h2>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-icon">📊</div>
+                <h3>Data Pipeline</h3>
+                <p>Live stock data fetched via <strong>yfinance</strong> API. Computes annualised returns and covariance matrix from 252 trading days of historical closing prices.</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">📐</div>
+                <h3>Classical Solver</h3>
+                <p><strong>Markowitz Mean-Variance</strong> optimization via SciPy's SLSQP. Minimises portfolio variance while maximising expected return, with diversification bounds [5%–40%].</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">⚛️</div>
+                <h3>Quantum Solver</h3>
+                <p>Portfolio reformulated as a <strong>QUBO</strong> problem. Solved using IBM Qiskit's <strong>QAOA</strong> ansatz (p=1) with COBYLA optimizer on a StatevectorSampler simulator.</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">🧮</div>
+                <h3>QUBO Formulation</h3>
+                <p>Binary variables q<sub>i</sub> ∈ {0,1} per asset. Objective: minimise <code>λ·q<sup>T</sup>Σq − (1−λ)·μ<sup>T</sup>q</code> where Σ is the covariance matrix and μ is expected returns.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Built with Python, Qiskit & Chart.js · Quantum Portfolio Optimization using QAOA</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
